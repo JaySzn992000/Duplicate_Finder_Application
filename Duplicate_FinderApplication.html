@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+<div id="top_div">
+<h1>Duplicate Finder</h1>
+</div>
+<textarea name="" id="inputvalue" cols="30" rows="10" oninput="duplicate()"></textarea>
+
+<div id="div_output">
+<p id="output"></p>
+</div>
+
+
+<style>
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#inputvalue{
+    width: 50%;
+    height: 100vh;
+    border: none;
+    padding: 27px;
+    border: 1px solid gainsboro;
+    border-radius: 7px;
+    outline: none;
+}
+
+
+h1{
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#div_output{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    background-color: gainsboro;
+    width: 50vw;
+    height: auto;
+    padding-bottom: 77px;
+    margin-top: -77px;
+    z-index: -999;
+}
+
+#output{
+    width: 177px;
+    color: white;
+}
+
+#top_div{
+    background-color: royalblue;
+    width: 100%;
+    height: 77px;
+    z-index: 999;
+}
+
+
+</style>
+
+
+
+<script>
+
+
+function duplicate(){
+
+var array = document.getElementById("inputvalue").value;
+var splitarray = array.split(" ");
+var b = [];
+var i = 0;
+var text = document.getElementById("output") 
+
+
+
+while ( i < splitarray.length ) {
+
+    b[i] = splitarray[i]
+    i++
+
+}
+
+
+text.innerHTML = "";
+ 
+
+var n = 0;
+while ( n <= b.length ) {
+var k = n+1;
+
+while ( k <= b.length ) {
+    
+    if ( b[n] == b[k] ) {
+
+        var element = document.createElement("p");
+        element.style.backgroundColor = "red";
+        element.innerHTML = b[n];
+        element.style.marginTop = "1em"; 
+        element.style.marginLeft = "2em";  
+        element.style.width = "auto";
+        element.style.height = "auto";
+        element.style.borderRadius = "10px"; 
+        element.style.padding = "9px";
+        element.style.paddingLeft = "19px"; 
+        text.appendChild(element);
+        j = 0;
+        break;
+
+    }
+
+    k++
+
+}
+    n++
+}
+
+
+    var colors = ["orange", "deeppink", "darkslateblue", "royalblue", "pink", "yellow"];
+    
+    var j = 0;
+    var duplicateElements = text.getElementsByTagName("p");
+
+    while (j < duplicateElements.length) {
+        duplicateElements[j].style.backgroundColor = colors[j % colors.length]; // j = remainder 0
+        j++;
+    }
+
+}
+
+
+</script>
+
+    
+</body>
+</html>
